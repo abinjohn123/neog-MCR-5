@@ -5,6 +5,8 @@ import { STANDARD_RECIPES } from './constants';
 
 const AppContext = createContext({});
 
+const storedRecipes = JSON.parse(localStorage.getItem('stored-recipes')) ?? [];
+
 const recipesWithIDs = STANDARD_RECIPES.map((recipe) => ({
   ...recipe,
   ingredients: recipe.ingredients
@@ -14,7 +16,7 @@ const recipesWithIDs = STANDARD_RECIPES.map((recipe) => ({
 }));
 
 const AppProvider = ({ children }) => {
-  const [recipes, setRecipes] = useState(recipesWithIDs);
+  const [recipes, setRecipes] = useState([...recipesWithIDs, ...storedRecipes]);
 
   const contextValue = { recipes, setRecipes };
 
