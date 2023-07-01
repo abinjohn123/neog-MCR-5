@@ -11,6 +11,7 @@ const NewRecipeModal = ({ setIsModalOpen }) => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
+    e.stopPropagation();
     const formData = new FormData(formRef.current);
     const storedRecipes =
       JSON.parse(localStorage.getItem('stored-recipes')) ?? [];
