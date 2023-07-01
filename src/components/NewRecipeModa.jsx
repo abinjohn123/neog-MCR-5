@@ -66,6 +66,10 @@ const NewRecipeModal = ({ setIsModalOpen }) => {
             />
           </label>
           <label className="full-w">
+            <span className="label-text">Image URL</span>
+            <input className="form-input" name="imageURL" />
+          </label>
+          <label className="full-w">
             <span className="label-text">Cuisine</span>
             <input className="form-input" name="cuisine" required />
           </label>
