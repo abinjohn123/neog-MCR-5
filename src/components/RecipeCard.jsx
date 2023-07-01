@@ -4,7 +4,6 @@ const RecipeCard = ({ recipe }) => {
   const { id, name, cuisine, imageURL } = recipe;
   const navigate = useNavigate();
 
-  console.log(cuisine);
   return (
     <div className="recipe-card" onClick={() => navigate(`/recipe/${id}`)}>
       <div className="img-container">

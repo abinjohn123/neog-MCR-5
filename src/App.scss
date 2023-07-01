@@ -2,6 +2,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 24px;
+  margin: 0 24px;
 }
 
 .recipe-card {
@@ -66,4 +67,36 @@
   .steps {
     margin-left: 16px;
   }
+}
+
+.header {
+  padding: 16px;
+  margin-bottom: 24px;
+}
+
+.filters {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  .search-input {
+    padding: 8px;
+  }
+
+  .radio-containers {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 4px;
+
+    label {
+      cursor: pointer;
+    }
+  }
+}
+
+.no-recipe-msg {
+  flex-basis: 100%;
+  padding: 48px 16px;
+  text-align: center;
 }
