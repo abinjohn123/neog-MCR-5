@@ -32,3 +32,38 @@
     }
   }
 }
+
+.single-recipe-card {
+  max-width: 1040px;
+  padding: 24px;
+  margin: 0 auto;
+  border: 1px solid #000;
+
+  display: flex;
+  gap: 16px;
+
+  .img-container {
+    width: 400px;
+    flex-shrink: 0;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  h2 {
+    margin-bottom: 16px;
+  }
+
+  .cuisine {
+    font-weight: 700;
+    font-style: italic;
+  }
+  p {
+    margin-bottom: 8px;
+  }
+
+  .steps {
+    margin-left: 16px;
+  }
+}
