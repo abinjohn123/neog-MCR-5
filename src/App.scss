@@ -32,6 +32,21 @@
       align-items: center;
     }
   }
+
+  .delete-btn {
+    text-align: end;
+    margin-top: 8px;
+
+    button {
+      padding: 8px;
+      background-color: #042f2e;
+      outline: none;
+      border: none;
+      color: #fff;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  }
 }
 
 .single-recipe-card {

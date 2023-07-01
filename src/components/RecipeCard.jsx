@@ -1,8 +1,16 @@
 import { useNavigate } from 'react-router-dom';
+import { useAppContext } from '../AppContext';
 
 const RecipeCard = ({ recipe }) => {
+  const { setRecipes } = useAppContext();
   const { id, name, cuisine, imageURL } = recipe;
   const navigate = useNavigate();
+
+  const handleDeleteClick = (e) => {
+    e.stopPropagation();
+
+    setRecipes((recipes) => recipes.filter(({ id: eachId }) => eachId !== id));
+  };
 
   return (
     <div className="recipe-card" onClick={() => navigate(`/recipe/${id}`)}>
@@ -25,6 +33,9 @@ const RecipeCard = ({ recipe }) => {
           <p>{'>'} View </p>
         </li>
       </ul>
+      <div className="delete-btn" onClick={handleDeleteClick}>
+        <button>Delete</button>
+      </div>
     </div>
   );
 };
