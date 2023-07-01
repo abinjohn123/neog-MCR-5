@@ -20,10 +20,7 @@ const Recipe = () => {
         <p className="cuisine">Cuisine: {cuisine}</p>
 
         <p>
-          <strong>Ingredients:</strong>{' '}
-          {ingredients
-            .map(({ name, quantity }) => `${name} x ${quantity}`)
-            .join(', ')}
+          <strong>Ingredients:</strong> {ingredients}
         </p>
         <ul className="steps">
           <strong>Steps</strong>

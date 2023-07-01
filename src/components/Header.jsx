@@ -1,4 +1,10 @@
-const Header = ({ filterSearch, setFilterSearch, setFilterType }) => {
+const Header = ({
+  filterSearch,
+  setFilterSearch,
+  filterType,
+  setFilterType,
+  setIsModalOpen,
+}) => {
   return (
     <div className="header">
       <div className="filters">
@@ -14,10 +20,23 @@ const Header = ({ filterSearch, setFilterSearch, setFilterType }) => {
           onChange={(e) => setFilterType(e.target.value)}
         >
           <label htmlFor="name">
-            <input type="radio" id="name" name="filter" value="name" /> Name
+            <input
+              type="radio"
+              id="name"
+              name="filter"
+              value="name"
+              checked={filterType === 'name'}
+            />{' '}
+            Name
           </label>
           <label htmlFor="cuisine">
-            <input type="radio" id="cuisine" name="filter" value="cuisine" />{' '}
+            <input
+              type="radio"
+              id="cuisine"
+              name="filter"
+              value="cuisine"
+              checked={filterType === 'cuisine'}
+            />{' '}
             Cuisine
           </label>
           <label htmlFor="ingredients">
@@ -26,10 +45,14 @@ const Header = ({ filterSearch, setFilterSearch, setFilterType }) => {
               id="ingredients"
               name="filter"
               value="ingredients"
+              checked={filterType === 'ingredients'}
             />{' '}
             Ingredients
           </label>
         </div>
+      </div>
+      <div className="new-recipe-btn" onClick={() => setIsModalOpen(true)}>
+        Add new recipe
       </div>
     </div>
   );

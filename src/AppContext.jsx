@@ -7,6 +7,9 @@ const AppContext = createContext({});
 
 const recipesWithIDs = STANDARD_RECIPES.map((recipe) => ({
   ...recipe,
+  ingredients: recipe.ingredients
+    .map(({ name, quantity }) => `${name} x ${quantity}`)
+    .join(', '),
   id: uuid(),
 }));
 

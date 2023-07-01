@@ -3,39 +3,34 @@ import { useAppContext } from '../AppContext';
 
 import Header from './Header';
 import RecipeCard from './RecipeCard';
+import NewRecipeModal from './NewRecipeModa';
 
 const Home = () => {
   const { recipes, setRecipes } = useAppContext();
   const [filterSearch, setFilterSearch] = useState('');
-  const [filterType, setFilterType] = useState(null);
+  const [filterType, setFilterType] = useState('name');
   const [sortedRecipes, setSortedRecipes] = useState([...recipes]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   // Fitler comes here + Add Recipe button
 
   // Cards
   useEffect(() => {
-    if (!filterType) return;
-
     if (filterSearch === '') setSortedRecipes([...recipes]);
     else
       setSortedRecipes(
-        recipes.filter((recipe) => {
-          if (filterType === 'ingredients') {
-            const mappedIngredients = recipe.ingredients
-              .map((item) => item.name.toLowerCase())
-              .join(', ');
-
-            return mappedIngredients.includes(filterSearch);
-          }
-          return recipe[filterType].toLowerCase().includes(filterSearch);
-        })
+        recipes.filter((recipe) =>
+          recipe[filterType].toLowerCase().includes(filterSearch)
+        )
       );
-  }, [filterSearch, filterType]);
+  }, [filterSearch, filterType, recipes]);
   return (
     <div>
       <Header
         setFilterSearch={setFilterSearch}
         filterSearch={filterSearch}
         setFilterType={setFilterType}
+        setIsModalOpen={setIsModalOpen}
+        filterType={filterType}
       />
       <div className="recipe-cards-container">
         {sortedRecipes.length === 0 && (
@@ -47,7 +42,7 @@ const Home = () => {
           <RecipeCard recipe={recipe} key={key} />
         ))}
       </div>
-      ;
+      {isModalOpen && <NewRecipeModal setIsModalOpen={setIsModalOpen} />}
     </div>
   );
 };
